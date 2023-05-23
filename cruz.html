@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de amor</title>
+    <style>
+        #heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            color: red;
+        }
+
+        #question {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+        }
+
+        #buttons {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+</head>
+
+<body>
+    <div id="heart">❤️</div>
+    <div id="question">Você me ama?</div>
+    <div id="buttons">
+        <button id="no">Não</button>
+        <button id="yes">Sim</button>
+    </div>
+    <script>
+
+const yesButton = document.getElementById('yes');
+      yesButton.addEventListener('click', () => {
+        const message = document.createElement('p');
+        message.innerText = 'Eu te amo!';
+        message.style.textAlign = 'center';
+        message.style.fontSize = '36px';
+        message.style.color = 'red';
+        message.style.marginTop = '20px';
+        document.body.appendChild(message);
+        const heart = document.getElementById('heart');
+        heart.style.animation = 'pulse 1s infinite';
+        heart.style.fontSize = '200px';
+        heart.style.transitionDuration = '5s';
+        const question = document.getElementById('question');
+        question.remove();
+        const buttons = document.getElementById('no');
+        buttons.remove();
+      });
+
+        const noButton = document.getElementById('no');
+        noButton.addEventListener('click', () => {
+            const message = document.createElement('p');
+            message.innerText = 'Erro - 404!! Recarregando a pagina...';
+            message.style.textAlign = 'center';
+            message.style.fontSize = '36px';
+            message.style.color = 'blue';
+            message.style.marginTop = '20px';
+            document.body.appendChild(message);
+            const heart = document.getElementById('heart');
+            heart.innerText = '❌';
+            heart.style.color = 'red';
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+            const buttons = document.getElementById('buttons');
+        buttons.remove();
+        });
+    </script>
+</body>
+
+</html>
